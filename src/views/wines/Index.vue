@@ -1,11 +1,12 @@
 <template>
   <div class="wines-index">
+    <h1>hi</h1>
     <div v-for="wine in wines">
       <router-link v-bind:to="'/wines/' + wine.id">
         <h3>{{ wine.name }}</h3>
       </router-link>
       <img :src="wine.image_url" :alt="wine.name">
-      <p>{{ wine.body }}</p>
+      <p>{{ wine.description }}</p>
     </div>
   </div>
 </template>
