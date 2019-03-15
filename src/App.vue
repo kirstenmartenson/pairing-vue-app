@@ -12,3 +12,25 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  data: function() {
+    return {
+      user: {}
+    };
+  },
+  created: function() {
+    axios.get("/api/users/me").then(response => {
+      this.user = response.data;
+      console.log(this.user);
+    });
+  },
+  methods: {
+    isLoggedIn: function() {
+      return localStorage.getItem("jwt");
+    }
+  }
+};
+</script>
