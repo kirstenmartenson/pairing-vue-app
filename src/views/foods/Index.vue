@@ -1,13 +1,13 @@
-<template>
-  <div class="foods-index">
+<template> 
+  <div class="foods-index"> 
+    <h1>hi</h1> 
     <div v-for="food in foods">
-      <router-link v-bind:to="'/foods/' + food_id">
+      <router-link v-bind:to="'/foods/' + food.id"> 
         <h3>{{ food.name }}</h3>
-      </router-link>
-      <img :src="food.image" :alt="food.name">
-      <p>{{ food.name }}</p>
-    </div>
-  </div>
+      </router-link> 
+      <p>{{ food.name }}</p> 
+    </div> 
+  </div> 
 </template>
 
 <script>
