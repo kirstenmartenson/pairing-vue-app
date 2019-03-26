@@ -1,3 +1,4 @@
+
 <template>
   <div class="login">
 
@@ -68,7 +69,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   data: function() {
     return {

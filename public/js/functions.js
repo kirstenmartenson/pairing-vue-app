@@ -684,6 +684,7 @@ var SEMICOLON = SEMICOLON || {};
 			return topOffsetScroll;
 		},
 
+
 		defineColumns: function( element ){
 			var column = 4,
 				xlCol = element.attr('data-xl-col'),

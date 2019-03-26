@@ -17,7 +17,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   data: function() {
     return {
@@ -30,7 +29,6 @@ export default {
       console.log(response.data);
       this.favorites = response.data;
     });
-
     axios.get("/api/users/me").then(response => {
       console.log(response.data);
       this.user = response.data;

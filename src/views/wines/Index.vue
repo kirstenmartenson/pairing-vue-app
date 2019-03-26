@@ -14,11 +14,10 @@
           <ul id="portfolio-filter" class="portfolio-filter clearfix" data-container="#portfolio">
 
             <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
-            <li><a href="#" data-filter=".pf-icons">Icons</a></li>
-            <li><a href="#" data-filter=".pf-illustrations">Illustrations</a></li>
-            <li><a href="#" data-filter=".pf-uielements">UI Elements</a></li>
-            <li><a href="#" data-filter=".pf-media">Media</a></li>
-            <li><a href="#" data-filter=".pf-graphics">Graphics</a></li>
+            <li><a href="#" data-filter=".pf-icons">Red</a></li>
+            <li><a href="#" data-filter=".pf-illustrations">White</a></li>
+            <li><a href="#" data-filter=".pf-uielements">Sparkling</a></li>
+            <li><a href="#" data-filter=".pf-media">Fortified</a></li>
 
           </ul><!-- #portfolio-filter end -->
 
@@ -61,6 +60,7 @@
 </template>
 
 <script>
+/* global $, SEMICOLON */
 import axios from "axios";
 export default {
   data: function() {
@@ -72,6 +72,8 @@ export default {
     axios.get("/api/wines").then(response => {
       console.log(response.data);
       this.wines = response.data;
+      // initiates grid on class of .grid-container
+      SEMICOLON.portfolio.gridInit($(".grid-container"));
     });
   },
   methods: {}

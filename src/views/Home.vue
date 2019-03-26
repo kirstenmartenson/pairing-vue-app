@@ -8,6 +8,7 @@
 </style>
 
 <script>
+
 export default {
   data: function() {
     return {
@@ -17,4 +18,4 @@ export default {
   created: function() {},
   methods: {}
 };
-</script>
+</script
