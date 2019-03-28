@@ -14,20 +14,20 @@
           <ul id="portfolio-filter" class="portfolio-filter clearfix" data-container="#portfolio">
 
             <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
-            <li><a href="#" data-filter=".pf-icons">Red</a></li>
-            <li><a href="#" data-filter=".pf-illustrations">White</a></li>
-            <li><a href="#" data-filter=".pf-uielements">Sparkling</a></li>
-            <li><a href="#" data-filter=".pf-media">Fortified</a></li>
+            <li><a href="#" @click="setCategory('Red')">Red</a></li>
+            <li><a href="#" @click="setCategory('White')">White</a></li>
+            <li><a href="#" @click="setCategory('Sparkling')">Sparkling</a></li>
+            <li><a href="#" @click="setCategory('Fortified')">Fortified</a></li>
 
           </ul><!-- #portfolio-filter end -->
-
+          <input v-model="categoryFilter" list="categories" placeholder="Search Wines by Category" type="text">
           <div class="clear"></div>
 
           <!-- Portfolio Items
           ============================================= -->
           <div id="portfolio" class="portfolio grid-container portfolio-2 portfolio-masonry clearfix">
 
-            <article v-for="wine in wines" class="portfolio-item pf-media pf-icons">
+            <article v-for="wine in orderBy(filterBy(wines, categoryFilter))" class="portfolio-item pf-media pf-icons">
               <router-link v-bind:to="'/wines/' + wine.id">
                 <div class="portfolio-image">
                   <a href="portfolio-single.html">
@@ -54,18 +54,27 @@
       </div>
 
     </section><!-- #content end -->
-
-
+    <datalist id="categories">
+      <option>Red</option>
+      <option>White</option>
+      <option>Sparkling</option>
+      <option>Fortified</option>
+    </datalist>
   </div>
 </template>
 
 <script>
 /* global $, SEMICOLON */
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
-      wines: []
+      wines: [],
+      wine: {},
+      categoryFilter: "",
+      categories: []
     };
   },
   created: function() {
@@ -76,6 +85,10 @@ export default {
       SEMICOLON.portfolio.gridInit($(".grid-container"));
     });
   },
-  methods: {}
+  methods: {
+    setCategory: function(category) {
+      this.categoryFilter = category;
+    }
+  }
 };
 </script>

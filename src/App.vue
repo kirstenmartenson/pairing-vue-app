@@ -16,8 +16,11 @@
           <!-- Logo
           ============================================= -->
           <div id="logo">
-            <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo"></a>
-            <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a>
+            <router-link to="/">
+              <img src="https://i.imgur.com/1GOnylV.png" alt="Perfect Pairings">
+            </router-link>        
+
+<!--             <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a> -->
           </div><!-- #logo end -->
 
           <!-- Primary Navigation
@@ -25,16 +28,18 @@
           <nav id="primary-menu">
 
             <ul>
-              <li><a href="index.html"><div>Home</div></a>
-              </li>
-              <li><a href="#"><div>Features</div></a>
-              </li>
+              <li><router-link to="/wines"><div>Wines</div></router-link></li>
+              <li><router-link to="/foods"><div>Foods</div></router-link></li>
+              <li><router-link to="/pairings"><div>Pairings</div></router-link></li>
+              <li><router-link v-if="isLoggedIn()" to="/users/me"><div>Profile</div></router-link></li>
+              <li><router-link v-if="!isLoggedIn()" to="/login"><div>Login</div></router-link></li>
             </ul>
 
             <!-- Featured Link
             ============================================= -->
             <div id="top-search">
-              <a href="#" id="top-search-trigger">Signup</a>
+              <router-link v-if="isLoggedIn()" to="/logout">Logout</router-link>
+              <router-link v-else to="/signup"><span>Signup</span></router-link>
             </div><!-- #featured-link end -->
 
           </nav><!-- #primary-menu end -->
@@ -58,15 +63,21 @@
 
         <div class="container clearfix">
 
-          <div class="col_half">
-            <img src="images/footer-logo.png" alt="Footer Logo" class="footer-logo">
-
-            Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.
+          <div class="col_half"><!-- 
+            <img src="images/footer-logo.png" alt="Footer Logo" class="footer-logo"> -->
           </div>
 
           <div class="col_half col_last tright">
             <div class="copyrights-menu copyright-links fright clearfix">
-              <a href="#">Home</a>/<a href="#">About</a>/<a href="#">Features</a>/<a href="#">Portfolio</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
+              <router-link to="/">Home</router-link>
+              /
+              <router-link to="/wines">Wine</router-link>
+              /
+              <router-link to="/foods">Food</router-link>
+              /
+              <router-link to="/pairings">Pairings</router-link>
+              /
+              <router-link to="users">Profile</router-link>
             </div>
             <div class="fright clearfix">
               <a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">

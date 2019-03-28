@@ -14,19 +14,20 @@
           <ul id="portfolio-filter" class="portfolio-filter clearfix" data-container="#portfolio">
 
             <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
-            <li><a href="#" data-filter=".pf-icons">Icons</a></li>
-            <li><a href="#" data-filter=".pf-illustrations">Illustrations</a></li>
-            <li><a href="#" data-filter=".pf-uielements">UI Elements</a></li>
-            <li><a href="#" data-filter=".pf-media">Media</a></li>
-            <li><a href="#" data-filter=".pf-graphics">Graphics</a></li>
-
-          </ul><!-- #portfolio-filter end -->
+            <li><a href="#" @click="setCategory('Appetizers')">Appetizers</a></li>
+            <li><a href="#" @click="setCategory('Salads')">Salads</a></li>
+            <li><a href="#" @click="setCategory('Pasta')">Pasta</a></li>
+            <li><a href="#" @click="setCategory('Meat')">Meat</a></li>
+            <li><a href="#" @click="setCategory('Poultry')">Poultry</a></li>
+            <li><a href="#" @click="setCategory('Fish & Seafood')">Fish & Seafood</a></li>
+            <li><a href="#" @click="setCategory('Desserts')">Desserts</a></li>
+          </ul> <!-- #portfolio-filter end -->
 
           <div class="clear"></div>
 
           <!-- Portfolio Items
           ============================================= -->
-          <div id="portfolio" class="portfolio grid-container portfolio-2 portfolio-masonry clearfix">
+          <div id="portfolio" class="portfolio grid-container portfolio-3 portfolio-masonry clearfix">
 
             <article v-for="food in foods" class="portfolio-item pf-media pf-icons">
               <router-link v-bind:to="'/foods/' + food.id">
@@ -35,10 +36,10 @@
                     <img :src="food.image_url" :alt="food.name">
                   </a>
                   <!-- hover effect with buttons -->
-                  <div class="portfolio-overlay">
+<!--                   <div class="portfolio-overlay">
                     <a href="images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
                     <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                  </div>
+                  </div> -->
                   <!-- hover effect with buttons end-->
                 </div>
                 <div class="portfolio-desc">
@@ -78,6 +79,8 @@ export default {
     axios.get("/api/foods").then(response => {
       console.log(response.data);
       this.foods = response.data;
+
+      SEMICOLON.portfolio.gridInit($(".grid-container"));
     });
   },
   methods: {}

@@ -1,7 +1,6 @@
 <template>
   <div class="signup">
 
-
     <!-- Content
     ============================================= -->
     <section id="content">
@@ -11,11 +10,6 @@
         <div class="container clearfix">
 
           <div class="tabs divcenter nobottommargin clearfix" id="tab-login-register" style="max-width: 500px;">
-
-            <ul class="tab-nav tab-nav2 center clearfix">
-              <li class="inline-block"><router-link to="/login">Login</router-link></li>
-              <li class="inline-block"><router-link to="/signup">Register</router-link></li>
-            </ul>
 
             <div class="tab-container">
 
@@ -30,32 +24,22 @@
 
                       <div class="col_full">
                         <label for="register-form-name">Name:</label>
-                        <input type="text" id="register-form-name" name="register-form-name" value="" class="form-control" />
+                        <input type="text" id="register-form-name" name="register-form-name" v-model="name" class="form-control" />
                       </div>
 
                       <div class="col_full">
                         <label for="register-form-email">Email Address:</label>
-                        <input type="text" id="register-form-email" name="register-form-email" value="" class="form-control" />
-                      </div>
-
-                      <div class="col_full">
-                        <label for="register-form-username">Choose a Username:</label>
-                        <input type="text" id="register-form-username" name="register-form-username" value="" class="form-control" />
-                      </div>
-
-                      <div class="col_full">
-                        <label for="register-form-phone">Phone:</label>
-                        <input type="text" id="register-form-phone" name="register-form-phone" value="" class="form-control" />
+                        <input type="text" id="register-form-email" name="register-form-email" v-model="email" class="form-control" />
                       </div>
 
                       <div class="col_full">
                         <label for="register-form-password">Choose Password:</label>
-                        <input type="password" id="register-form-password" name="register-form-password" value="" class="form-control" />
+                        <input type="password" id="register-form-password" name="register-form-password" v-model="password" class="form-control" />
                       </div>
 
                       <div class="col_full">
                         <label for="register-form-repassword">Re-enter Password:</label>
-                        <input type="password" id="register-form-repassword" name="register-form-repassword" value="" class="form-control" />
+                        <input type="password" id="register-form-repassword" name="register-form-repassword" v-model="passwordConfirmation" class="form-control" />
                       </div>
 
                       <div class="col_full nobottommargin">
@@ -70,21 +54,11 @@
             </div>
 
           </div>
-
         </div>
-
       </div>
-
     </section><!-- #content end -->
 
-
-
-
-
-
-
-
-    <div class="container">
+<!--     <div class="container">
       <form v-on:submit.prevent="submit()">
         <h1>Signup</h1>
         <ul>
@@ -104,11 +78,11 @@
         </div>
         <div class="form-group">
           <label>Password confirmation:</label>
-          <input type="password" class="form-control" v-model="passwordConfirmation">
+          <input type="password" class="form-control" <form v-on:submit.prevent="submit()">
         </div>
         <input type="submit" class="btn btn-primary" value="Submit">
       </form>
-    </div>
+    </div> -->
   </div>
 </template>
 

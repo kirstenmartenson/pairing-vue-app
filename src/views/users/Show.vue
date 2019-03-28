@@ -1,17 +1,47 @@
 <template>
   <div class="users-show">
-    <div class="container">
-      <h1>{{ user.name }}</h1>
-      <h4>Email: {{ user.email }}'s Profile</h4>
-      <br>
-      <H3>My favorites</H3>
-      <div v-for="favorite in user.favorites">
-        <router-link v-bind:to="'/pairings/' + favorite.pairing_id">
-          <h5>favorite.pairing_id</h5>
-        </router-link>
+  
+  <!-- Content
+    ============================================= -->
+    <section id="content">
+
+      <div class="content-wrap">
+
+        <div class="container clearfix">
+
+          <div class="fancy-title title-border">
+            <h3>Your Profile</h3>
+            <br>
+            <h4 class="space-bottom-30">{{ user.name }}</h4>
+          </div>
+          
+
+          <div class="fancy-title title-border">
+            <h3>Your Favorite Pairings</h3>
+          </div>
+          <!-- repeating element -->
+          <div v-for="pairing in user.favorite_pairings" class="col_one_third">
+
+            <div class="team">
+              <div class="team-image">
+                <img :src="pairing.wine.image_url" alt="Wine">
+              </div>
+              <div class="team-desc">
+                <div class="team-title"><h4>{{pairing.wine.name}}</h4><span>{{pairing.food.name}}</span></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="clear"></div>
+
+
+        </div>
+
       </div>
-    </div>
-    <router-link v-bind:to="'/users/me/edit'">Edit my profile</router-link>
+
+    </section><!-- #content end -->
+
   </div>
 </template>
 
@@ -25,10 +55,6 @@ export default {
     };
   },
   created: function() {
-    axios.get("/api/favorites").then(response => {
-      console.log(response.data);
-      this.favorites = response.data;
-    });
     axios.get("/api/users/me").then(response => {
       console.log(response.data);
       this.user = response.data;

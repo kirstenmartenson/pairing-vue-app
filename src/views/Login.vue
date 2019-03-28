@@ -13,11 +13,6 @@
 
           <div class="tabs divcenter nobottommargin clearfix" id="tab-login-register" style="max-width: 500px;">
 
-            <ul class="tab-nav tab-nav2 center clearfix">
-              <li class="inline-block"><router-link to="/login">Login</router-link></li>
-              <li class="inline-block"><router-link to="/signup">Register</router-link></li>
-            </ul>
-
             <div class="tab-container">
 
               <div class="tab-content clearfix" id="tab-login">
@@ -66,6 +61,7 @@
 
   </div>
 </template>
+
 
 <script>
 import axios from "axios";
